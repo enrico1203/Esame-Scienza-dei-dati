@@ -1,0 +1,46 @@
+---
+title: "Esame scienza dei dati"
+author: "Chiarcossi Enrico"
+subtitle: Evoluzione del cinmema nel tempo e <br> problematiche che ne conseguono
+output:
+  ioslides_presentation:
+    incremental: yes
+  slidy_presentation:
+    incremental: yes
+editor_options:
+  chunk_output_type: inline
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(cache = FALSE, message = FALSE, warning = FALSE)
+```
+
+# Introduzione
+
+
+## The Movie Database
+
+[TMDB](https://www.themoviedb.org/?language=it-IT) è uno dei database p
+
+1. **capability**: It offers a gargantuan set of functionalities
+1. **community**: It has an elephantine, ever growing community of users
+1. **performance**: It is lightning fast (when running in main memory)
+
+## RStudio
+
+[RStudio](https://www.rstudio.com) is an integrated development environment (IDE) for R. It includes: 
+
+* a console
+* syntax-highlighting editor that supports direct code execution
+* tools for plotting, history, debugging and workspace management
+
+
+## Help and packages
+
+
+
+
+
+
+
+
