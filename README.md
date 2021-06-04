@@ -118,10 +118,10 @@ table(data$disponibilita)
 Questa tabella rappresente in numero di contenuti univoci per ogni
 piattaforma. ci saranno:
 
-1.  **21362**: contenuti disponibili SOLO in 1 servizio.
-2.  **951**: contenuti disponibili in 2 servizi.
-3.  **41**: contenuti disponibili in 3 servizi.
-4.  **0**: contenuti disponibili in 4 servizi.
+*  **21362**: contenuti disponibili SOLO in 1 servizio.
+*  **951**: contenuti disponibili in 2 servizi.
+*  **41**: contenuti disponibili in 3 servizi.
+*  **0**: contenuti disponibili in 4 servizi.
 
 Quindi possiamo negare senza alcun dubbio l’ipotesi precedente. Infatti
 21362 film/serie sono univoci e disponibili solo su uno dei 4 servizi.
