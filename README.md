@@ -97,7 +97,7 @@ entrambi lo stesso obiettivo sono completamente differenti.
 1. **PrimeVideo**: è un servizio offerto da una delle società più ricche al mondo. Amazon infatti dispone di un capitale talmente alto che gli permette di acquistare i diritti di migliaia di film e serie senza troppi problemi. Di recente ha anche iniziato a produrre. 
 2. **Disney+**: si tratta di una piattaforma che contiene solo ed esclusivamente film/serie prodotte o coprodotte da Disney.
 
-\#\#Disponibilità
+##Disponibilità
 
 Una domanda che sorge spontanea dopo aver visto il grafico precedente è:
 Se compro l’abbonamento ad PrimeVideo che ha migliaia di serie tv e film
