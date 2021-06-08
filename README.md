@@ -103,7 +103,7 @@ Di recente ha anche iniziato a produrre. 2. **Disney+**: si tratta di
 una piattaforma che contiene solo ed esclusivamente film/serie prodotte
 o coprodotte da Disney.
 
-\#\#Disponibilità
+## Disponibilità
 
 Una domanda che sorge spontanea dopo aver visto il grafico precedente è:
 Se compro l’abbonamento ad PrimeVideo che ha migliaia di serie tv e film
@@ -132,7 +132,7 @@ piattaforma. ci saranno:
 Quindi possiamo negare senza alcun dubbio l’ipotesi precedente. Infatti
 21362 film/serie sono univoci e disponibili solo su uno dei 4 servizi.
 
-\#\#Migliore disponibilità
+## Migliore disponibilità
 
 Appurato il fatto che non esiste un servizio che comprende gli altri ci
 chiediamo quale sia il migliore da questo punto di vista.
@@ -156,7 +156,7 @@ ma bensì un peggiore. Hulu contiene solo il 79% di titoli univoci.
 Quindi il 21% dei titoli di Hulu sono disponibili anche su altre
 piattaforme.
 
-\#\#Film disponibili in base all’anno
+## Film disponibili in base all’anno
 
 Un’altro fattore importante da considerare è quanto siano aggiornate le
 piattaforme. Qualcuno potrebbe pensare che un determinato servizio metta
@@ -208,7 +208,7 @@ legato al tempo. Vediamo però le situazioni al dettaglio effettuando
 degli ingrandimenti prima e dopo l’anno 2000 in cui è iniziata la
 crescita esponenziale del cinema.
 
-\#\#Situazione Dal 2000 a oggi
+## Situazione Dal 2000 a oggi
 
 ``` r
 nuovi_contenuti <- sqldf("SELECT 
@@ -254,7 +254,7 @@ alla chiusura/sospensione di quasi tutti i set cinematografici. Vediamo
 anche come Netflix abbia superato PrimeVideo per la prima volta nella
 quantità di contenuti proprio dopo il 2018
 
-\#\#Situazione prima del 2000
+## Situazione prima del 2000
 
 ``` r
 nuovi_contenuti <- sqldf("SELECT 
@@ -295,50 +295,32 @@ ggplot(nuovi_contenuti, aes(fill=piattaforma, x = year, y = quantita)) +
 ![](github_files/figure-gfm/unnamed-chunk-9-1.png)<!-- --> Anche qui
 notiamo subilo la superiorità di PrimeVideo che, fa cominciare il suo
 catalogo dal 1902 con il film: Viaggio nella Luna (A Trip to the Moon).
-Anche se non sembra da questo grafico, ma il secondo in classifica è
-disney+ che, con tutti i classici film di animazione raggiunge una buona
-quantità. Per vederlo meglio eliminiamo PrimeVideo dal grafico:
+Per vedere meglio le differenze tra gli altri servizi rimuoviamo
+PrimeVideo:
 
 ``` r
-nuovi_contenuti <- sqldf("SELECT 
-              year,
-              case 
-                  when netflix = 1 then 'netflix'
-                  when hulu = 1 then 'hulu'
-                  else 'disney+'
-              end as piattaforma,
-              count(1) as quantita
-      FROM 
-              data
-      WHERE
-              year < 2000  
-              
-     
-      GROUP BY
-              year,
-              case 
-                  when netflix = 1 then 'netflix'
-                  when hulu = 1 then 'hulu'
-                  else 'disney+'
-              end")
 ggplot(nuovi_contenuti, aes(fill=piattaforma, x = year, y = quantita)) + 
   geom_bar(position="dodge", stat="identity") +
   #geom_line()+
-  scale_fill_manual(values = c("#fbbe4f", "#99cc33", "#E50914", "#00A8E1")) +
+  scale_fill_manual(values = c("#fbbe4f", "#99cc33", "#E50914", "#FFFFFF")) +
   theme_classic() +
   ggtitle("Nuovi film/serie per anno") +
   xlab("Anno") +
+  ylim(c(0,30)) +
   ylab("Quantità") +
   theme(text = element_text(size=20), plot.title = element_text(hjust = 0.5),
         legend.title = element_blank())
 ```
 
-![](github_files/figure-gfm/unnamed-chunk-10-1.png)<!-- --> Infatti, nel
-1921 Diney pubblica il suo primo film di animazione: I tre moschettieri.
-Netflix e Hulu sono stabili e possiedono da 15 a 30 film/serie per ogni
-anno.
+    ## Warning: Removed 60 rows containing missing values (geom_bar).
 
-\#\#Rapida evoluzione di Netflix
+![](github_files/figure-gfm/unnamed-chunk-10-1.png)<!-- --> Come vediamo
+gli altri 3 servizi sono molto simili. Il Film più vecchio che possiede
+Netflix è: Born To Explore del 1914. Il Film più vecchio che possiede
+Hulu è: The Hunchback of Notre Dame del 1923 Mentre Nel 1921 Diney
+pubblica il suo primo film di animazione: I tre moschettieri.
+
+## Rapida evoluzione di Netflix
 
 In questo grafico animato vediamo ancora una volta la situazione dopo
 gli anni 2000. Grazie all’animazione è molto chiara la crescita di
@@ -441,7 +423,7 @@ media più bassa. Confrontando tutte le piattaforme però non c’è una
 grande differenza fra le valutazioni. quindi possiamo dire che la
 qualità dei contenuti è simile.
 
-\#\#Quantità dei generi
+## Quantità dei generi
 
 Abbiamo visto che la qualità generale è circa la stessa. Ma ci saranno
 dei generi in cui la qualità è migliore? Per prima cosa, vediamo quali
@@ -524,7 +506,7 @@ comedy,thriller e action sono quelli più presenti. Ma la cosa che ci
 interessa oltre alla quantità è la media dei voti per ciascuna
 categoria:
 
-\#\#Qualità delle catgorie
+## Qualità delle catgorie
 
 Calcoliamo ora la media dei voti per ogni categoria:
 
@@ -561,7 +543,7 @@ escludiamo News che ha solo 100 contenuti, la categoira con i voti più
 alti è documentary. Horror, sci-Fi e fantasy invece sono in fondo alla
 classifica.
 
-\#\#PARTE 2
+## PARTE 2
 
 Per la seconda parte di questo progetto ho sottoposto un sondaggio a 187
 persone cercando di diversificare il più possibile sulle caratteristiche
@@ -574,7 +556,7 @@ sondaggio <- read.csv("Risultati_sondaggio.csv")
 names(sondaggio)[4] <- "Disney+"
 ```
 
-\#Quali servizi vengono usati?
+# Quali servizi vengono usati?
 
 Dopo aver analizzato alcune differenze dei servizi di streaming ci
 chiediamo quali vengano realmente utilizzati tutti i giorni.
@@ -610,7 +592,7 @@ sia quasi ultimo. questo è dovuto al fatto che non è disponibile in
 italia. è accessibile solo tramite una vpn o vevendo all’estero. Delle 5
 persone che lo utilizzano 4 vivono in America.
 
-\#\#Ipotesi sul target di servizio per una età specifica
+## Ipotesi sul target di servizio per una età specifica
 
 Come ultima problema di questo progetto, ci andremo a chiedere se
 l’utilizzo di un certo servizio rispetto ad un’altro dipenda dall’età.
@@ -647,7 +629,7 @@ rapportate alla quantità. Anche se tra i 15 e i 30 anni abbiamo molti
 più dati, vediamo che la linea di tendenza è comunque abbastanza
 stabile.
 
-\#\#Servizi in base all’età
+## Servizi in base all’età
 
 ``` r
 names(sondaggio)[4] <- "Disney"
@@ -860,7 +842,7 @@ PrimeVideo lo raggiunge a 30. Differente anche il tipo di curva. Sul
 grafico di Netflix abbiamo una partenza alta e una discesa costante,
 Invece su PrimeVideo inizia costante per poi salire e riscendere.
 
-\#\#Conclusione
+## Conclusione
 
 In conclusione non esiste un servizio di streaming migliore di altri, ma
 sono tutti diversi. Differiscono in base al target di età e ai tipi di
