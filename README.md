@@ -737,7 +737,7 @@ modo riusciamo a trovare moltissime differenze:
 7. **Infinity**: Bassa diffusione. Da 20-30 e 40-45 
 8. **Netflix**: Altissima diffusione in tutte le età. In particolare tra 15-30 
 9. **NowTv**: bassa diffusione tra 20-40 anni 
-10. 10. **PrimeVideo+**: Altissima diffusione in tutte le età. In particolare da 25 a 40
+10. **PrimeVideo+**: Altissima diffusione in tutte le età. In particolare da 25 a 40
 
 Analizziamo in dettaglio i 2 servizi più diffusi:
 
