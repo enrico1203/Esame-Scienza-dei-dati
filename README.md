@@ -37,10 +37,12 @@ Prima di iniziare ad analizzare i dataset andremo ad eliminare tutti i
 dati non necessari per il nostro scopo così da diminuire i tempi di
 compilazione ed evitare eventuali problemi in seguito:
 
-Le ulteriori operazioni da eseguire saranno: 
-1. **Titoli minuscoli**: Per evitare problemi nei confronti tra servizi rendo tutti i tioli in minoscolo.
-2. **Unione dataset**: creazione unico dataset che comprende sia film che serie tv.
-3. **ridenominazione**: per aumentare la chiarezza ed eliminare gli spazi per problemi di compattibilità con SQL. Esempio: “prime video” diventa “prime\_video”.
+Le ulteriori operazioni da eseguire saranno: . **Titoli minuscoli**: Per
+evitare problemi nei confronti tra servizi rendo tutti i tioli in
+minoscolo. . **Unione dataset**: creazione unico dataset che comprende
+sia film che serie tv. . **ridenominazione**: per aumentare la chiarezza
+ed eliminare gli spazi per problemi di compattibilità con SQL. Esempio:
+“prime video” diventa “prime\_video”.
 
 ``` r
 names(film) <- tolower(names(film)) #titoli in minuscolo
@@ -93,11 +95,15 @@ proprio sulle serie tv americane lasciando i fim in secondo piano.
 
 Il secondo fatto da analizzare è l’assoluta superiorità di PrimeVideo e
 al contempo l’inferiorità di disney+. Questi 2 servizi, anche se hanno
-entrambi lo stesso obiettivo sono completamente differenti.
-1. **PrimeVideo**: è un servizio offerto da una delle società più ricche al mondo. Amazon infatti dispone di un capitale talmente alto che gli permette di acquistare i diritti di migliaia di film e serie senza troppi problemi. Di recente ha anche iniziato a produrre. 
-2. **Disney+**: si tratta di una piattaforma che contiene solo ed esclusivamente film/serie prodotte o coprodotte da Disney.
+entrambi lo stesso obiettivo sono completamente differenti. 1. **Prime
+Video**: è un servizio offerto da una delle società più ricche al mondo.
+Amazon infatti dispone di un capitale talmente alto che gli permette di
+acquistare i diritti di migliaia di film e serie senza troppi problemi.
+Di recente ha anche iniziato a produrre. 2. **Disney+**: si tratta di
+una piattaforma che contiene solo ed esclusivamente film/serie prodotte
+o coprodotte da Disney.
 
-## Disponibilità
+\#\#Disponibilità
 
 Una domanda che sorge spontanea dopo aver visto il grafico precedente è:
 Se compro l’abbonamento ad PrimeVideo che ha migliaia di serie tv e film
@@ -118,15 +124,15 @@ table(data$disponibilita)
 Questa tabella rappresente in numero di contenuti univoci per ogni
 piattaforma. ci saranno:
 
-*  **21362**: contenuti disponibili SOLO in 1 servizio.
-*  **951**: contenuti disponibili in 2 servizi.
-*  **41**: contenuti disponibili in 3 servizi.
-*  **0**: contenuti disponibili in 4 servizi.
+1.  **21362**: contenuti disponibili SOLO in 1 servizio.
+2.  **951**: contenuti disponibili in 2 servizi.
+3.  **41**: contenuti disponibili in 3 servizi.
+4.  **0**: contenuti disponibili in 4 servizi.
 
 Quindi possiamo negare senza alcun dubbio l’ipotesi precedente. Infatti
 21362 film/serie sono univoci e disponibili solo su uno dei 4 servizi.
 
-## Migliore disponibilità
+\#\#Migliore disponibilità
 
 Appurato il fatto che non esiste un servizio che comprende gli altri ci
 chiediamo quale sia il migliore da questo punto di vista.
@@ -150,7 +156,7 @@ ma bensì un peggiore. Hulu contiene solo il 79% di titoli univoci.
 Quindi il 21% dei titoli di Hulu sono disponibili anche su altre
 piattaforme.
 
-## Film disponibili in base all’anno
+\#\#Film disponibili in base all’anno
 
 Un’altro fattore importante da considerare è quanto siano aggiornate le
 piattaforme. Qualcuno potrebbe pensare che un determinato servizio metta
@@ -202,7 +208,7 @@ legato al tempo. Vediamo però le situazioni al dettaglio effettuando
 degli ingrandimenti prima e dopo l’anno 2000 in cui è iniziata la
 crescita esponenziale del cinema.
 
-## Situazione Dal 2000 a oggi
+\#\#Situazione Dal 2000 a oggi
 
 ``` r
 nuovi_contenuti <- sqldf("SELECT 
@@ -248,7 +254,7 @@ alla chiusura/sospensione di quasi tutti i set cinematografici. Vediamo
 anche come Netflix abbia superato PrimeVideo per la prima volta nella
 quantità di contenuti proprio dopo il 2018
 
-## Situazione prima del 2000
+\#\#Situazione prima del 2000
 
 ``` r
 nuovi_contenuti <- sqldf("SELECT 
@@ -332,7 +338,7 @@ ggplot(nuovi_contenuti, aes(fill=piattaforma, x = year, y = quantita)) +
 Netflix e Hulu sono stabili e possiedono da 15 a 30 film/serie per ogni
 anno.
 
-## Rapida evoluzione di Netflix
+\#\#Rapida evoluzione di Netflix
 
 In questo grafico animato vediamo ancora una volta la situazione dopo
 gli anni 2000. Grazie all’animazione è molto chiara la crescita di
@@ -435,7 +441,7 @@ media più bassa. Confrontando tutte le piattaforme però non c’è una
 grande differenza fra le valutazioni. quindi possiamo dire che la
 qualità dei contenuti è simile.
 
-## Quantità dei generi
+\#\#Quantità dei generi
 
 Abbiamo visto che la qualità generale è circa la stessa. Ma ci saranno
 dei generi in cui la qualità è migliore? Per prima cosa, vediamo quali
@@ -518,7 +524,7 @@ comedy,thriller e action sono quelli più presenti. Ma la cosa che ci
 interessa oltre alla quantità è la media dei voti per ciascuna
 categoria:
 
-## Qualità delle catgorie
+\#\#Qualità delle catgorie
 
 Calcoliamo ora la media dei voti per ogni categoria:
 
@@ -555,7 +561,7 @@ escludiamo News che ha solo 100 contenuti, la categoira con i voti più
 alti è documentary. Horror, sci-Fi e fantasy invece sono in fondo alla
 classifica.
 
-## PARTE 2
+\#\#PARTE 2
 
 Per la seconda parte di questo progetto ho sottoposto un sondaggio a 187
 persone cercando di diversificare il più possibile sulle caratteristiche
@@ -568,7 +574,7 @@ sondaggio <- read.csv("Risultati_sondaggio.csv")
 names(sondaggio)[4] <- "Disney+"
 ```
 
-## Quali servizi vengono usati?
+\#Quali servizi vengono usati?
 
 Dopo aver analizzato alcune differenze dei servizi di streaming ci
 chiediamo quali vengano realmente utilizzati tutti i giorni.
@@ -604,7 +610,7 @@ sia quasi ultimo. questo è dovuto al fatto che non è disponibile in
 italia. è accessibile solo tramite una vpn o vevendo all’estero. Delle 5
 persone che lo utilizzano 4 vivono in America.
 
-## Ipotesi sul target di servizio per una età specifica
+\#\#Ipotesi sul target di servizio per una età specifica
 
 Come ultima problema di questo progetto, ci andremo a chiedere se
 l’utilizzo di un certo servizio rispetto ad un’altro dipenda dall’età.
@@ -641,7 +647,7 @@ rapportate alla quantità. Anche se tra i 15 e i 30 anni abbiamo molti
 più dati, vediamo che la linea di tendenza è comunque abbastanza
 stabile.
 
-## Servizi in base all’età
+\#\#Servizi in base all’età
 
 ``` r
 names(sondaggio)[4] <- "Disney"
@@ -736,17 +742,18 @@ anim
 ```
 
 ![](github_files/figure-gfm/unnamed-chunk-19-1.gif)<!-- --> In questo
-modo riusciamo a trovare moltissime differenze: 
-1. **AppleTv**: Poco diffuso, qualche utilizzo nella fascia 20-25 e 40-45 
-2. **Chili**: Poco diffuso, utilizzato solo tra i 40-50 anni 
-3. **Crunchyroll**: Buona diffusione solamente tra i 15 e 25 anni. Questo servizio infatti fornisce in streaming prevalentemente cartoni animati 
-4. **Disney+**: Alta diffusione in tutte le età, ma non più di 2 persone intervistate della stessa età lo utilizzano 
-5. **Dplay**: Bassa diffusione. Utilizzato soamente da 50-55 anni. 
-6. **Hulu**: Bassa diffusione. Solo tra 20-30 anni 
-7. **Infinity**: Bassa diffusione. Da 20-30 e 40-45 
-8. **Netflix**: Altissima diffusione in tutte le età. In particolare tra 15-30 
-9. **NowTv**: bassa diffusione tra 20-40 anni 
-10. **PrimeVideo+**: Altissima diffusione in tutte le età. In particolare da 25 a 40
+modo riusciamo a trovare moltissime differenze: 1. **AppleTv**: Poco
+diffuso, qualche utilizzo nella fascia 20-25 e 40-45 2. **Chili**: Poco
+diffuso, utilizzato solo tra i 40-50 anni 3. **Crunchyroll**: Buona
+diffusione solamente tra i 15 e 25 anni. Questo servizio infatti
+fornisce in streaming prevalentemente cartoni animati 4. **Disney+**:
+Alta diffusione in tutte le età, ma non più di 2 persone intervistate
+della stessa età lo utilizzano 5. **Dplay**: Bassa diffusione.
+Utilizzato soamente da 50-55 anni. 6. **Hulu**: Bassa diffusione. Solo
+tra 20-30 anni 7. **Infinity**: Bassa diffusione. Da 20-30 e 40-45 8.
+**Netflix**: Altissima diffusione in tutte le età. In particolare tra
+15-30 9. **NowTv**: bassa diffusione tra 20-40 anni 10. **PrimeVideo+**:
+Altissima diffusione in tutte le età. In particolare da 25 a 40
 
 Analizziamo in dettaglio i 2 servizi più diffusi:
 
@@ -853,7 +860,7 @@ PrimeVideo lo raggiunge a 30. Differente anche il tipo di curva. Sul
 grafico di Netflix abbiamo una partenza alta e una discesa costante,
 Invece su PrimeVideo inizia costante per poi salire e riscendere.
 
-## Conclusione
+\#\#Conclusione
 
 In conclusione non esiste un servizio di streaming migliore di altri, ma
 sono tutti diversi. Differiscono in base al target di età e ai tipi di
