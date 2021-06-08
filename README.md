@@ -39,8 +39,10 @@ compilazione ed evitare eventuali problemi in seguito:
 
 Le ulteriori operazioni da eseguire saranno: . **Titoli minuscoli**: Per
 evitare problemi nei confronti tra servizi rendo tutti i tioli in
-minoscolo. . **Unione dataset**: creazione unico dataset che comprende
-sia film che serie tv. . **ridenominazione**: per aumentare la chiarezza
+minoscolo. 
+1. **Unione dataset**: creazione unico dataset che comprende
+sia film che serie tv. 
+2. **ridenominazione**: per aumentare la chiarezza
 ed eliminare gli spazi per problemi di compattibilità con SQL. Esempio:
 “prime video” diventa “prime\_video”.
 
@@ -95,11 +97,12 @@ proprio sulle serie tv americane lasciando i fim in secondo piano.
 
 Il secondo fatto da analizzare è l’assoluta superiorità di PrimeVideo e
 al contempo l’inferiorità di disney+. Questi 2 servizi, anche se hanno
-entrambi lo stesso obiettivo sono completamente differenti. 1. **Prime
-Video**: è un servizio offerto da una delle società più ricche al mondo.
+entrambi lo stesso obiettivo sono completamente differenti. 
+1. **PrimeVideo**: è un servizio offerto da una delle società più ricche al mondo.
 Amazon infatti dispone di un capitale talmente alto che gli permette di
 acquistare i diritti di migliaia di film e serie senza troppi problemi.
-Di recente ha anche iniziato a produrre. 2. **Disney+**: si tratta di
+Di recente ha anche iniziato a produrre. 
+2. **Disney+**: si tratta di
 una piattaforma che contiene solo ed esclusivamente film/serie prodotte
 o coprodotte da Disney.
 
@@ -724,18 +727,17 @@ anim
 ```
 
 ![](github_files/figure-gfm/unnamed-chunk-19-1.gif)<!-- --> In questo
-modo riusciamo a trovare moltissime differenze: 1. **AppleTv**: Poco
-diffuso, qualche utilizzo nella fascia 20-25 e 40-45 2. **Chili**: Poco
-diffuso, utilizzato solo tra i 40-50 anni 3. **Crunchyroll**: Buona
-diffusione solamente tra i 15 e 25 anni. Questo servizio infatti
-fornisce in streaming prevalentemente cartoni animati 4. **Disney+**:
-Alta diffusione in tutte le età, ma non più di 2 persone intervistate
-della stessa età lo utilizzano 5. **Dplay**: Bassa diffusione.
-Utilizzato soamente da 50-55 anni. 6. **Hulu**: Bassa diffusione. Solo
-tra 20-30 anni 7. **Infinity**: Bassa diffusione. Da 20-30 e 40-45 8.
-**Netflix**: Altissima diffusione in tutte le età. In particolare tra
-15-30 9. **NowTv**: bassa diffusione tra 20-40 anni 10. **PrimeVideo+**:
-Altissima diffusione in tutte le età. In particolare da 25 a 40
+modo riusciamo a trovare moltissime differenze: 
+1. **AppleTv**: Poco diffuso, qualche utilizzo nella fascia 20-25 e 40-45 
+2. **Chili**: Poco diffuso, utilizzato solo tra i 40-50 anni 
+3. **Crunchyroll**: Buona diffusione solamente tra i 15 e 25 anni. Questo servizio infatti fornisce in streaming prevalentemente cartoni animati 
+4. **Disney+**: Alta diffusione in tutte le età, ma non più di 2 persone intervistate della stessa età lo utilizzano 
+5. **Dplay**: Bassa diffusione. Utilizzato soamente da 50-55 anni. 
+6. **Hulu**: Bassa diffusione. Solo tra 20-30 anni 
+7. **Infinity**: Bassa diffusione. Da 20-30 e 40-45 
+8. **Netflix**: Altissima diffusione in tutte le età. In particolare tra 15-30 
+9. **NowTv**: bassa diffusione tra 20-40 anni 
+10. 10. **PrimeVideo+**: Altissima diffusione in tutte le età. In particolare da 25 a 40
 
 Analizziamo in dettaglio i 2 servizi più diffusi:
 
