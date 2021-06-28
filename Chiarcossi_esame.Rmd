@@ -3,14 +3,12 @@ title: "Esame fondamenti di scienza dei dati e laboratorio"
 author: "Chiarcossi Enrico"
 subtitle: Trasformazione del cinema e <br> servizi di streaming
 output:
-  ioslides_presentation:
-    css: 'C:\Users\chiar\Desktop\R\Esame\scroll.css'
-    incremental: yes
-  slidy_presentation:
-    incremental: yes
+  revealjs::revealjs_presentation:
+     theme: league
+     highlight: pygments
+     center: "true"
 editor_options:
   chunk_output_type: inline
-   
 ---
 
 ```{r setup, include=FALSE}
@@ -28,6 +26,7 @@ library(gganimate)
 library(scales)
 library(gridExtra)
 library(data.table)
+library(RColorBrewer)
 ```
 
 
@@ -83,6 +82,8 @@ ggplot(N_SerieServizio, aes(fill=tipo, x = reorder(piattaforma, - quantita), y =
   theme(text = element_text(size=20), plot.title = element_text(hjust = 0.5),
         legend.title = element_blank())
 ```
+
+
 
 # Disponibilità
 
@@ -146,6 +147,11 @@ ggplot(nuovi_contenuti, aes(fill=piattaforma, x = year, y = quantita)) +
   theme(text = element_text(size=20), plot.title = element_text(hjust = 0.5),
             legend.title = element_blank())
 ```
+```{r}
+cor1= cor(nuovi_contenuti$year, nuovi_contenuti$quantita)
+
+```
+
 
 
 ## Situazione Dal 2000 a oggi
@@ -184,10 +190,15 @@ ggplot(nuovi_contenuti, aes(fill=piattaforma, x = year, y = quantita)) +
   theme(text = element_text(size=20), plot.title = element_text(hjust = 0.5),
         legend.title = element_blank())
 ```
+```{r}
+cor2= cor(nuovi_contenuti$year, nuovi_contenuti$quantita)
 
+```
+
+## Situazione Dal 2000 a oggi
 <div class="centered">
 
-![](C:\Users\chiar\Desktop\R\Esame\nuovi_contenuti.gif){Height=99%}
+![](img/animazioni/nuovi_contenuti.gif){Height=99%}
 </div>
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 
@@ -276,8 +287,12 @@ ggplot(nuovi_contenuti, aes(fill=piattaforma, x = year, y = quantita)) +
   theme(text = element_text(size=20), plot.title = element_text(hjust = 0.5),
         legend.title = element_blank())
 ```
+```{r}
+cor3= cor(nuovi_contenuti$year, nuovi_contenuti$quantita)
 
-Senza prime video:
+```
+
+## Situazione prima del 2000 senza PrimeVideo
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 
@@ -294,6 +309,21 @@ ggplot(nuovi_contenuti, aes(fill=piattaforma, x = year, y = quantita)) +
         legend.title = element_blank())
 
 ```
+```{r}
+cor4= cor(nuovi_contenuti$year, nuovi_contenuti$quantita)
+
+```
+
+## Correlazioni
+L'anno è correlato alla quantità di film prodotti?
+
+1. Completo= `r cor1 `
+2. Dal 2000 a oggi= `r cor2 `
+3. FIno al 2000= `r cor3 `
+
+Risultato: Correlazione molto bassa
+
+
 
 # Qual'è il servizio con maggiore qualità?
 ## Qual'è il servizio con maggiore qualità?
@@ -330,6 +360,24 @@ ggplot(imdb_valutazioni, aes(fill=type, x =  reorder(piattaforma, -imdb_voti), y
   theme(text = element_text(size=20), plot.title = element_text(hjust = 0.5),
         legend.title = element_blank())
 
+```
+
+## Confornto
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+
+boxplot <-melt(as.data.table(data), id.vars = c("imdb", "type"), measure.vars = c("netflix", "hulu", "prime_video", "disney+"))
+colnames(boxplot)[3] <- "piattaforma"
+boxplot <- boxplot[boxplot$value == 1,]
+boxplot <- boxplot[!is.na(boxplot$imdb), ]
+
+ggplot(boxplot, aes(type, imdb)) +
+geom_boxplot(aes(fill=factor(as.factor(piattaforma)))) + 
+  labs( y="Valutazioni", x="") +
+  scale_fill_manual(values = c("#E50914", "#99cc33", "#00A8E1", "#fbbe4f")) +
+  theme_classic() +
+  theme(text = element_text(size=20), plot.title = element_text(hjust = 0.5),
+        legend.title = element_blank()) 
 ```
 
 # Quantità in base al genere?
@@ -386,6 +434,11 @@ ggplot(valutazione_genere_bassi, aes(x =  reorder(genere, -quantita_totale), y =
   theme(text = element_text(size=20), plot.title = element_text(hjust = 0.5),
         legend.title = element_blank()) +
   coord_flip()
+```
+
+## Quale genere ha più contenuti?
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
 
 ggplot(valutazione_genere, aes(x =  reorder(genere, -quantita_totale), y = quantita_totale)) + 
   geom_bar(position="dodge", stat="identity") +
@@ -491,9 +544,12 @@ ggplot(eta, aes( x = eta, y = Risposte, colour="Red")) +
   xlab("Età") +
   scale_x_continuous(breaks = seq(15, 75, by = 5))+
   ylab("Quantità") +
-  theme(text = element_text(size=20), plot.title = element_text(hjust = 0.5),
-        legend.title = element_blank())
+  theme(text = element_text(size=20), plot.title = element_text(hjust = 0.5), legend.position = "none")
 ```
+```{r}
+cor(eta$eta,eta$Risposte)
+```
+
 
 # Servizi usati in base all'età
 
@@ -558,6 +614,11 @@ ggplot(eta_servizi, aes(fill=Piattaforma, x = eta, y = Quantita)) +
 
 ```
 
+
+
+
+## Servizi in base all'età
+
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 library(gganimate)
 #install.packages('gifski')
@@ -585,10 +646,18 @@ anim <- g +
 
 #anim_save("eta_servizi.gif", animate(anim, fps = 3, width = 750, height = 450))
 ```
+
 <div class="centered">
 
-![](C:\Users\chiar\Desktop\R\Esame\eta_servizi.gif){Height=99%}
+![](img/animazioni/eta_servizi.gif){Height=99%}
 </div>
+
+## Correlazione
+
+```{r}
+cor(eta_servizi$eta,eta_servizi$Quantita)
+```
+Coefficiente di Pearson negativo: All'aumentare dell'età, la quantità di servizi di streaming utilizzati diminuisce
 
 # Netflix-Prime
 ## Netflix-Prime
@@ -616,7 +685,6 @@ gg1 <- ggplot(eta_servizi_netflix, aes(fill=Piattaforma, x = eta, y = Quantita))
 
 ```
 
-
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 eta_servizi_Prime<-eta_servizi[(eta_servizi$Piattaforma=="PrimeVideo"),]
 eta_servizi_Prime2<-eta_servizi_Prime[(eta_servizi_Prime$Quantita>1 ),]
@@ -640,10 +708,17 @@ gg2 <- ggplot(eta_servizi_Prime, aes(fill=Piattaforma, x = eta, y = Quantita)) +
 
 
 gg1
-gg2
+
 
 
 ```
+
+## Netflix-Prime
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+gg2
+```
+
 
 # Confronto
 ## Confronto
@@ -677,3 +752,7 @@ gg2 <- ggplot(eta_servizi_Prime, aes(fill=Piattaforma, x = eta, y = Quantita)) +
 
 grid.arrange(gg1, gg2, ncol=1)
 ```
+
+# Conclusione
+<h3 style="color:red;">Non esiste un servizio migliore di un'altro<h3>
+<h3 style="color:Green;">Ogni servizio ha le sue caratteristiche<h3>
