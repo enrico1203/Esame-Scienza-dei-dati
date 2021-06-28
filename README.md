@@ -18,7 +18,7 @@ concorrenza causa problemi ai consumatori?
 
 In questa progetto andremo ad utilizzare 2 dataset che contengono
 l’elenco di tutti i film e serie tv presenti su 4 piattaforme. La fonte
-dei dati è: <https://bit.ly/3oBdvqG> che contiene gli script in python e
+dei dati è: <https://bit.ly/3hg2R5G> che contiene gli script in python e
 in javascript utilizzati per lo scraping dei dati. Dato che la maggior
 parte delle piattaforme ha recentemente bloccato l’utilizzo di questi
 script chiudendo gli account di chi li utilizza i dati si fermano a fine
